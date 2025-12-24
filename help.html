@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помощь в выборе ковра | Orient Carpets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2B48C;
+            --accent: #CD853F;
+            --light: #F5F5DC;
+            --dark: #3E2723;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: gold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: gold;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            color: var(--primary);
+            font-size: 2.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .guide-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .guide-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .guide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .guide-card:hover .guide-image img {
+            transform: scale(1.05);
+        }
+
+        .guide-content {
+            padding: 2rem;
+        }
+
+        .guide-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .guide-content ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .guide-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .guide-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .size-guide {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .size-table th,
+        .size-table td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .size-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+        }
+
+        .size-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .style-guide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .style-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .style-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 4rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .quiz-section h2 {
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quiz-option {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .quiz-result {
+            display: none;
+            background: white;
+            color: var(--dark);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .calc-input {
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .calc-input input,
+        .calc-input select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .calc-result {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .guide-grid,
+            .style-guide {
+                grid-template-columns: 1fr;
+            }
+            
+            .quiz-section,
+            .calculator,
+            .size-guide {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-rug"></i>
+                <span>Orient Carpets</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="help.html" class="active">Помощь в выборе</a></li>
+                <li><a href="terms.html">Соглашение</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Помощь в выборе ковра</h1>
+        
+        <div class="guide-intro">
+            <p>Выбор идеального ковра — это искусство. Наш гид поможет вам разобраться во всех нюансах и сделать правильный выбор, который будет радовать вас долгие годы.</p>
+        </div>
+
+        <section>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2.2rem;">Критерии выбора</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-content">
+                        <h3>1. Как выбрать размер</h3>
+                        <p>Правильный размер — основа гармонии в интерьере:</p>
+                        <ul>
+                            <li>В гостиной: оставляйте 30-50 см от стен</li>
+                            <li>В спальне: ковер должен выступать на 50-70 см от кровати</li>
+                            <li>В столовой: ковер должен быть больше стола на 60-80 см</li>
+                            <li>В прихожей: минимум 30 см отступ от стен</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-content">
+                        <h3>2. Выбор материала</h3>
+                        <p>Каждый материал имеет свои особенности:</p>
+                        <ul>
+                            <li><strong>Шерсть:</strong> прочная, упругая, натуральная</li>
+                            <li><strong>Шелк:</strong> блестящая поверхность, для декора</li>
+                            <li><strong>Хлопок:</strong> легкий уход, доступная цена</li>
+                            <li><strong>Смесовые:</strong> сочетают преимущества разных материалов</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-content">
+                        <h3>3. Цвет и узор</h3>
+                        <p>Создайте нужную атмосферу:</p>
+                        <ul>
+                            <li>Светлые тона: визуально расширяют пространство</li>
+                            <li>Темные тона: создают уют и скрывают загрязнения</li>
+                            <li>Геометрические узоры: современный стиль</li>
+                            <li>Цветочные орнаменты: классика, уют</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-content">
+                        <h3>4. По назначению комнаты</h3>
+                        <p>Разные комнаты — разные требования:</p>
+                        <ul>
+                            <li>Гостиная: плотный ворс, яркие цвета</li>
+                            <li>Спальня: мягкий ворс, спокойные тона</li>
+                            <li>Детская: гипоаллергенный, легко чистится</li>
+                            <li>Кухня/прихожая: короткий ворс, влагостойкий</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="size-guide">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2.2rem;">Стандартные размеры ковров</h2>
+            <table class="size-table">
+                <thead>
+                    <tr>
+                        <th>Размер (см)</th>
+                        <th>Рекомендуемое помещение</th>
+                        <th>Примерная цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>60 × 120</td>
+                        <td>Прихожая, санузел</td>
+                        <td>от 5 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>120 × 170</td>
+                        <td>Спальня, кабинет</td>
+                        <td>от 15 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>170 × 240</td>
+                        <td>Гостиная средних размеров</td>
+                        <td>от 25 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>200 × 300</td>
+                        <td>Большая гостиная, зал</td>
+                        <td>от 40 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>240 × 340</td>
+                        <td>Просторные помещения</td>
+                        <td>от 60 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td>300 × 400</td>
+                        <td>Бальные залы, рестораны</td>
+                        <td>от 100 000 ₽</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2.2rem;">Ковры для разных стилей</h2>
+            <div class="style-guide">
+                <div class="style-item">
+                    <i class="fas fa-crown"></i>
+                    <h3>Классика</h3>
+                    <p>Персидские ковры с растительными орнаментами, насыщенные цвета, золотые нити</p>
+                </div>
+                <div class="style-item">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Скандинавский</h3>
+                    <p>Светлые тона, геометрические узоры, натуральные материалы, минимализм</p>
+                </div>
+                <div class="style-item">
+                    <i class="fas fa-gem"></i>
+                    <h3>Модерн</h3>
+                    <p>Абстрактные узоры, контрастные цвета, смелые решения, современные материалы</p>
+                </div>
+                <div class="style-item">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Эко-стиль</h3>
+                    <p>Натуральные цвета, грубая текстура, ручная работа, экологичные материалы</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2.2rem;">Калькулятор подбора ковра</h2>
+            <div class="calculator-grid">
+                <div class="calc-input">
+                    <label for="roomType">Тип помещения</label>
+                    <select id="roomType">
+                        <option value="living">Гостиная</option>
+                        <option value="bedroom">Спальня</option>
+                        <option value="dining">Столовая</option>
+                        <option value="hallway">Прихожая</option>
+                        <option value="office">Кабинет</option>
+                    </select>
+                </div>
+                <div class="calc-input">
+                    <label for="roomLength">Длина комнаты (м)</label>
+                    <input type="number" id="roomLength" min="1" max="20" step="0.1" value="4">
+                </div>
+                <div class="calc-input">
+                    <label for="roomWidth">Ширина комнаты (м)</label>
+                    <input type="number" id="roomWidth" min="1" max="20" step="0.1" value="3">
+                </div>
+                <div class="calc-input">
+                    <label for="stylePreference">Предпочитаемый стиль</label>
+                    <select id="stylePreference">
+                        <option value="classic">Классический</option>
+                        <option value="modern">Современный</option>
+                        <option value="minimalist">Минимализм</option>
+                        <option value="eclectic">Эклектика</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn" id="calculateBtn">Рассчитать рекомендации</button>
+            </div>
+            
+            <div class="calc-result" id="calcResult" style="display: none;">
+                <h3>Наши рекомендации:</h3>
+                <div class="result-value" id="recommendedSize">200 × 300 см</div>
+                <p id="recommendedStyle">Персидский ковер с растительным орнаментом</p>
+                <p id="recommendedMaterial">Шерсть с шелком</p>
+                <p id="budgetEstimate">Примерный бюджет: 35 000 - 50 000 ₽</p>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Быстрый тест: какой ковр вам подходит?</h2>
+            <p>Ответьте на 3 вопроса и получите персональные рекомендации</p>
+            
+            <div class="quiz-options" id="quizStep1">
+                <div class="quiz-option" data-answer="busy">
+                    <i class="fas fa-users"></i>
+                    <p>Гостиная с активным движением</p>
+                </div>
+                <div class="quiz-option" data-answer="quiet">
+                    <i class="fas fa-bed"></i>
+                    <p>Спальня, мало проходимое место</p>
+                </div>
+                <div class="quiz-option" data-answer="kids">
+                    <i class="fas fa-child"></i>
+                    <p>Детская комната</p>
+                </div>
+            </div>
+            
+            <div class="quiz-result" id="quizResult">
+                <h3>Ваш идеальный ковер:</h3>
+                <p id="quizResultText"></p>
+                <a href="index.php" class="btn">Посмотреть в каталоге</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Orient Carpets</h3>
+                <p>Эксклюзивные ковры ручной работы от мастеров Востока. Более 25 лет на рынке.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, ул. Ткацкая, 15</span>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (495) 123-45-67</span>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@orient-carpets.ru</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Часы работы</h3>
+                <ul>
+                    <li>Пн-Пт: 10:00 - 20:00</li>
+                    <li>Сб: 11:00 - 18:00</li>
+                    <li>Вс: 12:00 - 16:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Orient Carpets. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            const calculateBtn = document.getElementById('calculateBtn');
+            const calcResult = document.getElementById('calcResult');
+            
+            if (calculateBtn) {
+                calculateBtn.addEventListener('click', function() {
+                    const roomType = document.getElementById('roomType').value;
+                    const roomLength = parseFloat(document.getElementById('roomLength').value);
+                    const roomWidth = parseFloat(document.getElementById('roomWidth').value);
+                    const stylePreference = document.getElementById('stylePreference').value;
+                    
+                    let recommendedSize = '';
+                    let recommendedStyle = '';
+                    let recommendedMaterial = '';
+                    let budgetEstimate = '';
+                    
+                    if (roomType === 'living') {
+                        recommendedSize = `${Math.floor(roomLength * 100 * 0.7)} × ${Math.floor(roomWidth * 100 * 0.7)} см`;
+                        recommendedMaterial = 'Шерсть с шелком';
+                        budgetEstimate = '35 000 - 50 000 ₽';
+                    } else if (roomType === 'bedroom') {
+                        recommendedSize = `${Math.floor(roomLength * 100 * 0.8)} × ${Math.floor(roomWidth * 100 * 0.8)} см`;
+                        recommendedMaterial = 'Мягкая шерсть';
+                        budgetEstimate = '25 000 - 40 000 ₽';
+                    } else {
+                        recommendedSize = `${Math.floor(roomLength * 100 * 0.9)} × ${Math.floor(roomWidth * 100 * 0.9)} см`;
+                        recommendedMaterial = 'Хлопок или смесовая ткань';
+                        budgetEstimate = '15 000 - 30 000 ₽';
+                    }
+                    
+                    if (stylePreference === 'classic') {
+                        recommendedStyle = 'Персидский ковер с растительным орнаментом';
+                    } else if (stylePreference === 'modern') {
+                        recommendedStyle = 'Современный ковер с геометрическим узором';
+                    } else if (stylePreference === 'minimalist') {
+                        recommendedStyle = 'Однотонный ковер с текстурной поверхностью';
+                    } else {
+                        recommendedStyle = 'Эклектичный ковер с ярким узором';
+                    }
+                    
+                    document.getElementById('recommendedSize').textContent = recommendedSize;
+                    document.getElementById('recommendedStyle').textContent = recommendedStyle;
+                    document.getElementById('recommendedMaterial').textContent = recommendedMaterial;
+                    document.getElementById('budgetEstimate').textContent = `Примерный бюджет: ${budgetEstimate}`;
+                    
+                    calcResult.style.display = 'block';
+                });
+            }
+            
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            const quizResult = document.getElementById('quizResult');
+            const quizResultText = document.getElementById('quizResultText');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const answer = this.getAttribute('data-answer');
+                    let result = '';
+                    
+                    if (answer === 'busy') {
+                        result = 'Вам подойдет плотный шерстяной ковер с коротким ворсом темных тонов. Он устойчив к истиранию и легко чистится. Рекомендуем турецкие ковры Kilim.';
+                    } else if (answer === 'quiet') {
+                        result = 'Идеальный выбор — персидский ковер с высоким ворсом и растительным орнаментом. Мягкий, уютный, создаст атмосферу релаксации.';
+                    } else if (answer === 'kids') {
+                        result = 'Выбирайте гипоаллергенный ковер из натурального хлопка с веселым ярким узором. Легко стирается, безопасен для детей.';
+                    }
+                    
+                    quizResultText.textContent = result;
+                    quizResult.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

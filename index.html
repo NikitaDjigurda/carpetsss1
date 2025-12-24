@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="восточные ковры, персидские ковры, купить ковер, ковры ручной работы, турецкие ковры, афганские ковры, марокканские ковры">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="canonical" href="https://orient_carpets.ru/">
+    <meta name="theme-color" content="#8B4513">
+    <title>Восточные Ковры | Магазин</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2B48C;
+            --accent: #CD853F;
+            --light: #F5F5DC;
+            --dark: #3E2723;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: gold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: gold;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600166898405-da9535204843?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .hero .btn {
+            font-size: 1.2rem;
+            padding: 0.8rem 2.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .carpets {
+            padding: 0 5% 5rem;
+        }
+
+        .carpet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .carpet-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .carpet-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .carpet-img {
+            height: 250px;
+            background-color: var(--secondary);
+            overflow: hidden;
+        }
+
+        .carpet-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .carpet-card:hover .carpet-img img {
+            transform: scale(1.05);
+        }
+
+        .carpet-info {
+            padding: 1.5rem;
+        }
+
+        .carpet-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .carpet-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .carpet-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .reviews-section {
+            padding: 60px 5%;
+            background-color: #f9f9f9;
+        }
+
+        .reviews-list {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .review-author {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .review-rating {
+            margin-right: 15px;
+        }
+
+        .review-rating .fa-star {
+            color: #ddd;
+            font-size: 1.1em;
+        }
+
+        .review-rating .fa-star.active {
+            color: #ffc107;
+        }
+
+        .review-date {
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .review-content {
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        .add-review-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .add-review-form h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .rating-stars {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .rating-stars input {
+            display: none;
+        }
+
+        .rating-stars label {
+            cursor: pointer;
+            font-size: 1.8em;
+            color: #ddd;
+            margin-right: 5px;
+            transition: color 0.2s;
+        }
+
+        .rating-stars input:checked ~ label,
+        .rating-stars label:hover,
+        .rating-stars label:hover ~ label {
+            color: #ffc107;
+        }
+
+        .login-link, .register-link {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .alert {
+            padding: 1rem;
+            margin: 1rem 5%;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .alert-info {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: modalOpen 0.5s;
+        }
+
+        @keyframes modalOpen {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-rug"></i>
+                <span>Orient carpets</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="help.html">Помощь в выборе</a></li>
+                <li><a href="terms.html">Соглашение</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn btn-outline" id="loginBtn">Вход</button>
+            <button class="btn btn-primary" id="registerBtn">Регистрация</button>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Эксклюзивные ковры ручной работы</h1>
+        <p>Откройте для себя нашу коллекцию уникальных ковров, созданных мастерами Востока</p>
+        <a href="#carpets" class="btn btn-primary">Посмотреть коллекцию</a>
+    </section>
+
+    <section class="carpets" id="carpets">
+        <h2 class="section-title">Наши ковры</h2>
+        <div class="carpet-grid">
+            <div class="carpet-card">
+                <div class="carpet-img">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Персидский ковер">
+                </div>
+                <div class="carpet-info">
+                    <h3 class="carpet-name">Персидский шелковый</h3>
+                    <p class="carpet-price">125 000 руб.</p>
+                    <p class="carpet-desc">Ручная работа, шелк, 200x300 см, традиционный орнамент</p>
+                    <button class="btn btn-primary">Подробнее</button>
+                </div>
+            </div>
+            
+            <div class="carpet-card">
+                <div class="carpet-img">
+                    <img src="https://images.unsplash.com/photo-1595599512946-4edc6f1b530a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Турецкий ковер">
+                </div>
+                <div class="carpet-info">
+                    <h3 class="carpet-name">Турецкий хлопковый</h3>
+                    <p class="carpet-price">85 000 руб.</p>
+                    <p class="carpet-desc">Хлопок ручной работы, 180x250 см, геометрический узор</p>
+                    <button class="btn btn-primary">Подробнее</button>
+                </div>
+            </div>
+            
+            <div class="carpet-card">
+                <div class="carpet-img">
+                    <img src="https://images.unsplash.com/photo-1595425834854-5f5f4a0b0c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Афганский ковер">
+                </div>
+                <div class="carpet-info">
+                    <h3 class="carpet-name">Афганский шерстяной</h3>
+                    <p class="carpet-price">95 000 руб.</p>
+                    <p class="carpet-desc">Грубая шерсть, ручная работа, 150x200 см, этнический стиль</p>
+                    <button class="btn btn-primary">Подробнее</button>
+                </div>
+            </div>
+            
+            <div class="carpet-card">
+                <div class="carpet-img">
+                    <img src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Марокканский ковер">
+                </div>
+                <div class="carpet-info">
+                    <h3 class="carpet-name">Марокканский берберский</h3>
+                    <p class="carpet-price">75 000 руб.</p>
+                    <p class="carpet-desc">Натуральная шерсть, ручная вязка, 170x240 см, племенной узор</p>
+                    <button class="btn btn-primary">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section" id="reviews">
+        <h2 class="section-title">Отзывы наших клиентов</h2>
+        
+        <div class="reviews-list">
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Анна Иванова</span>
+                    <div class="review-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                    </div>
+                    <span class="review-date">15.03.2024</span>
+                </div>
+                <div class="review-content">
+                    <p>Прекрасный ковер! Качество на высшем уровне. Доставили быстро, упаковано идеально. Рекомендую!</p>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Дмитрий Петров</span>
+                    <div class="review-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="review-date">10.03.2024</span>
+                </div>
+                <div class="review-content">
+                    <p>Отличный магазин! Помогли с выбором, консультант был очень внимателен. Ковер превзошел ожидания.</p>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <span class="review-author">Елена Смирнова</span>
+                    <div class="review-rating">
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                        <i class="fas fa-star active"></i>
+                    </div>
+                    <span class="review-date">05.03.2024</span>
+                </div>
+                <div class="review-content">
+                    <p>Заказывала персидский ковер в гостиную. Красота неописуемая! Все гости восхищаются. Спасибо!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="add-review-form">
+            <h3>Оставить отзыв</h3>
+            <div class="alert alert-info">
+                Чтобы оставить отзыв, пожалуйста <a href="#" class="login-link">войдите</a> или <a href="#" class="register-link">зарегистрируйтесь</a>.
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-col">
+            <h3>Восточные Ковры</h3>
+            <p>Мы предлагаем эксклюзивные ковры ручной работы, созданные по традиционным технологиям.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h3>Меню</h3>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="help.html">Помощь в выборе</a></li>
+                <li><a href="terms.html">Соглашение</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Контакты</h3>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Ткацкая, 15</li>
+                <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                <li><i class="fas fa-envelope"></i> info@orient-carpets.ru</li>
+                <li><i class="fas fa-clock"></i> Пн-Пт: 10:00 - 20:00</li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Подписка</h3>
+            <p>Подпишитесь на наши новости и акции</p>
+            <form id="subscribeForm">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Ваш email" required>
+                </div>
+                <button type="submit" class="submit-btn">Подписаться</button>
+            </form>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Orient carpets. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальные окна -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Вход в систему</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Пароль</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Войти</button>
+                </form>
+                <div class="form-footer">
+                    <p>Еще не зарегистрированы? <a href="#" id="switchToRegister">Создать аккаунт</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Регистрация</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regName">Имя</label>
+                        <input type="text" id="regName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Пароль</label>
+                        <input type="password" id="regPassword" class="form-control" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">Подтвердите пароль</label>
+                        <input type="password" id="regConfirmPassword" class="form-control" required minlength="6">
+                    </div>
+                    <button type="submit" class="submit-btn">Зарегистрироваться</button>
+                </form>
+                <div class="form-footer">
+                    <p>Уже есть аккаунт? <a href="#" id="switchToLogin">Войти</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Определяем текущую страницу для подсветки активного пункта меню
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Открытие модальных окон
+            document.getElementById('loginBtn').addEventListener('click', () => openModal('loginModal'));
+            document.getElementById('registerBtn').addEventListener('click', () => openModal('registerModal'));
+            
+            document.querySelector('.login-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('loginModal');
+            });
+            
+            document.querySelector('.register-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('registerModal');
+            });
+            
+            // Переключение между окнами входа и регистрации
+            document.getElementById('switchToRegister').addEventListener('click', function(e) {
+                e.preventDefault();
+                closeModal('loginModal');
+                openModal('registerModal');
+            });
+            
+            document.getElementById('switchToLogin').addEventListener('click', function(e) {
+                e.preventDefault();
+                closeModal('registerModal');
+                openModal('loginModal');
+            });
+            
+            // Закрытие модальных окон
+            document.querySelectorAll('.close-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    closeModal(modal.id);
+                });
+            });
+            
+            // Закрытие при клике вне окна
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this.id);
+                    }
+                });
+            });
+            
+            // Валидация формы регистрации
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const password = document.getElementById('regPassword').value;
+                const confirmPassword = document.getElementById('regConfirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    alert('Пароли не совпадают');
+                    return false;
+                }
+                
+                if (password.length < 6) {
+                    alert('Пароль должен содержать не менее 6 символов');
+                    return false;
+                }
+                
+                alert('Регистрация успешна! (демо-режим)');
+                closeModal('registerModal');
+                return false;
+            });
+            
+            // Обработка формы входа
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Вход выполнен! (демо-режим)');
+                closeModal('loginModal');
+                return false;
+            });
+            
+            // Обработка формы подписки
+            document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Спасибо за подписку! (демо-режим)');
+                this.reset();
+                return false;
+            });
+            
+            // Плавная прокрутка для якорных ссылок на этой странице
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            window.scrollTo({
+                                top: target.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Обработка кнопок "Подробнее" на карточках ковров
+            document.querySelectorAll('.carpet-card .btn-primary').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const carpetName = this.closest('.carpet-card').querySelector('.carpet-name').textContent;
+                    alert(`Вы выбрали: ${carpetName}\n(демо-режим)`);
+                });
+            });
+        });
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>

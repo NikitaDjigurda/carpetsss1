@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас | Orient Carpets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2B48C;
+            --accent: #CD853F;
+            --light: #F5F5DC;
+            --dark: #3E2723;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: gold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: gold;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            color: var(--primary);
+            font-size: 2.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-content h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .team-section {
+            margin: 4rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-info p {
+            color: #666;
+            font-style: italic;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo">
+            <a href="index.php">
+                <i class="fas fa-rug"></i>
+                <span>Orient Carpets</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"></li>
+                <li><a href="about.html" class="active">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="help.html">Помощь в выборе</a></li>
+                <li><a href="terms.html">Соглашение</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">О нашей компании</h1>
+        
+        <section class="about-section">
+            <div class="about-image">
+                <img src="uploads/777a0093cb4672a4cd83b283feb87d8a.jpg" 
+                     alt="Наш магазин восточных ковров">
+            </div>
+            <div class="about-content">
+                <h2>Традиции и качество с 1995 года</h2>
+                <p>Orient Carpets — это семейный бизнес, который начался с небольшой лавки в центре Москвы и вырос в один из ведущих магазинов восточных ковров в России.</p>
+                <p>На протяжении более 25 лет мы сохраняем и продолжаем традиции восточного ковроткачества, предлагая нашим клиентам только подлинные произведения искусства ручной работы.</p>
+                <p>Мы работаем напрямую с мастерами из Ирана, Турции, Афганистана, Пакистана и Марокко, что гарантирует подлинность и качество каждого ковра в нашей коллекции.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2.2rem;">Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Гарантия подлинности</h3>
+                    <p>Все ковры имеют сертификаты подлинности и документы о происхождении</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Бесплатная доставка</h3>
+                    <p>Доставка по всей России, самовывоз из нашего шоу-рума в Москве</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Пожизненная гарантия</h3>
+                    <p>Гарантия на все ковры и пожизненная поддержка по уходу</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-history"></i>
+                    <h3>История каждого ковра</h3>
+                    <p>Мы знаем историю создания каждого ковра и можем рассказать ее вам</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2.2rem;">Наша команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="uploads/maxresdefault (1).jpg" alt="Алиев Рашид">
+                    <div class="member-info">
+                        <h4>Алиев Рашид</h4>
+                        <p>Основатель, эксперт по персидским коврам</p>
+                        <p>25 лет опыта, лично отбирает ковры в Иране</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="uploads/maxresdefault.jpg" alt="Мария Соколова">
+                    <div class="member-info">
+                        <h4>Мария Соколова</h4>
+                        <p>Арт-директор, дизайнер интерьеров</p>
+                        <p>Помогает подобрать ковер под ваш интерьер</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="uploads/shutterstock_1572601639-e1576144600109.jpg" alt="Омар Хассан">
+                    <div class="member-info">
+                        <h4>Омар Хассан</h4>
+                        <p>Технический эксперт по реставрации</p>
+                        <p>Специалист по восстановлению антикварных ковров</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: white; padding: 3rem; border-radius: 15px; margin: 4rem 0;">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 2.2rem;">Наши ценности</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Честность и прозрачность</h3>
+                    <p>Мы никогда не скрываем происхождение, возраст или состояние ковра. Каждый клиент получает полную информацию о покупке.</p>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Уважение к традициям</h3>
+                    <p>Мы ценим труд мастеров и сохраняем традиционные технологии создания ковров, передавая это наследие нашим клиентам.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Индивидуальный подход</h3>
+                    <p>Для нас каждый клиент уникален. Мы помогаем подобрать ковер, который станет частью вашей семьи на долгие годы.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Orient Carpets</h3>
+                <p>Эксклюзивные ковры ручной работы от мастеров Востока. Более 25 лет на рынке.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, ул. Ткацкая, 15</span>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (495) 123-45-67</span>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@orient-carpets.ru</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Часы работы</h3>
+                <ul>
+                    <li>Пн-Пт: 10:00 - 20:00</li>
+                    <li>Сб: 11:00 - 18:00</li>
+                    <li>Вс: 12:00 - 16:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Orient Carpets. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

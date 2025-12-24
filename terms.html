@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пользовательское соглашение | Orient Carpets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2B48C;
+            --accent: #CD853F;
+            --light: #F5F5DC;
+            --dark: #3E2723;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: gold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: gold;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 2rem 0 3rem;
+            color: var(--primary);
+            font-size: 2.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .terms-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+        }
+
+        .terms-section {
+            margin-bottom: 3rem;
+        }
+
+        .terms-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            font-size: 1.8rem;
+        }
+
+        .terms-section h3 {
+            color: var(--accent);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .terms-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .terms-section ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .terms-section li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: -1.2rem;
+        }
+
+        .terms-list {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+        }
+
+        .terms-list li {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background-color: rgba(139, 69, 19, 0.1);
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .terms-content {
+                padding: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-rug"></i>
+                <span>Orient Carpets</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="help.html">Помощь в выборе</a></li>
+                <li><a href="terms.html" class="active">Соглашение</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Пользовательское соглашение</h1>
+        
+        <div class="terms-content">
+            <section class="terms-section">
+                <h2>1. Общие положения</h2>
+                <p>Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между Интернет-магазином «Orient Carpets» (далее — «Магазин») и Пользователем (далее — «Клиент») при использовании сайта orient-carpets.ru (далее — «Сайт»).</p>
+                
+                <div class="highlight">
+                    <p>Используя Сайт и совершая покупки в Магазине, Клиент подтверждает, что ознакомился с условиями настоящего Соглашения и принимает их в полном объеме.</p>
+                </div>
+                
+                <p>Магазин оставляет за собой право вносить изменения в настоящее Соглашение. Новая редакция Соглашения вступает в силу с момента ее размещения на Сайте, если иное не предусмотрено новой редакцией Соглашения.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>2. Условия покупки и доставки</h2>
+                
+                <h3>2.1. Порядок оформления заказа</h3>
+                <p>Для оформления заказа Клиент должен:</p>
+                <ul>
+                    <li>Выбрать товар в каталоге Магазина</li>
+                    <li>Добавить выбранный товар в корзину</li>
+                    <li>Указать контактные данные для связи</li>
+                    <li>Выбрать способ доставки и оплаты</li>
+                    <li>Подтвердить заказ</li>
+                </ul>
+
+                <h3>2.2. Доставка</h3>
+                <p>Магазин осуществляет доставку товаров следующими способами:</p>
+                <ul>
+                    <li><strong>Курьерская доставка по Москве:</strong> в течение 1-3 рабочих дней</li>
+                    <li><strong>Доставка по России:</strong> 5-14 рабочих дней в зависимости от региона</li>
+                    <li><strong>Самовывоз:</strong> из нашего шоу-рума по адресу: г. Москва, ул. Ткацкая, 15</li>
+                </ul>
+
+                <h3>2.3. Оплата</h3>
+                <p>Принимаются следующие способы оплаты:</p>
+                <ul>
+                    <li>Банковские карты Visa, MasterCard, МИР</li>
+                    <li>Электронные кошельки (ЮMoney, Qiwi)</li>
+                    <li>Банковский перевод для юридических лиц</li>
+                    <li>Наличными курьеру при получении (только по Москве)</li>
+                </ul>
+            </section>
+
+            <section class="terms-section">
+                <h2>3. Возврат и обмен товара</h2>
+                
+                <h3>3.1. Право на возврат</h3>
+                <p>В соответствии с Законом РФ «О защите прав потребителей» Клиент имеет право на возврат товара в течение 7 дней с момента получения, при условии сохранения товарного вида, упаковки и потребительских свойств товара.</p>
+
+                <div class="highlight">
+                    <p><strong>Важно!</strong> Ковры, изготовленные на заказ по индивидуальным размерам, возврату и обмену не подлежат.</p>
+                </div>
+
+                <h3>3.2. Порядок возврата</h3>
+                <p>Для оформления возврата необходимо:</p>
+                <ol class="terms-list">
+                    <li>Связаться с нами по телефону +7 (495) 123-45-67 или email info@orient-carpets.ru</li>
+                    <li>Сообщить номер заказа и причину возврата</li>
+                    <li>Обеспечить сохранность товара и оригинальной упаковки</li>
+                    <li>Ожидать выезда курьера для приема товара</li>
+                </ol>
+
+                <h3>3.3. Сроки возврата денежных средств</h3>
+                <p>Денежные средства возвращаются в течение 10 рабочих дней с момента получения товара Магазином и проверки его состояния.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>4. Гарантии и сервис</h2>
+                
+                <h3>4.1. Гарантийные обязательства</h3>
+                <p>На все ковры, представленные в Магазине, предоставляется гарантия:</p>
+                <ul>
+                    <li><strong>3 года</strong> — на ковры ручной работы из натуральных материалов</li>
+                    <li><strong>1 год</strong> — на ковры машинного производства</li>
+                    <li><strong>Пожизненная консультационная поддержка</strong> по уходу за ковром</li>
+                </ul>
+
+                <h3>4.2. Уход и обслуживание</h3>
+                <p>Мы предоставляем следующие услуги по уходу:</p>
+                <ul>
+                    <li>Бесплатная консультация по уходу</li>
+                    <li>Профессиональная химчистка со скидкой 20% для наших клиентов</li>
+                    <li>Выездная оценка состояния ковра</li>
+                    <li>Ремонт и реставрация</li>
+                </ul>
+            </section>
+
+            <section class="terms-section">
+                <h2>5. Конфиденциальность и защита данных</h2>
+                
+                <p>Магазин обязуется обеспечивать конфиденциальность персональных данных Клиента и не разглашать их третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
+
+                <h3>5.1. Сбор информации</h3>
+                <p>Мы собираем следующую информацию:</p>
+                <ul>
+                    <li>Контактные данные (имя, телефон, email)</li>
+                    <li>Адрес доставки</li>
+                    <li>Историю заказов</li>
+                    <li>Предпочтения в выборе товаров</li>
+                </ul>
+
+                <h3>5.2. Использование информации</h3>
+                <p>Собранная информация используется для:</p>
+                <ul>
+                    <li>Обработки и выполнения заказов</li>
+                    <li>Улучшения качества обслуживания</li>
+                    <li>Информирования об акциях и новинках (только с согласия Клиента)</li>
+                    <li>Анализа покупательского поведения</li>
+                </ul>
+            </section>
+
+            <section class="terms-section">
+                <h2>6. Ответственность сторон</h2>
+                
+                <h3>6.1. Ответственность Магазина</h3>
+                <p>Магазин несет ответственность за:</p>
+                <ul>
+                    <li>Качество реализуемых товаров</li>
+                    <li>Соблюдение сроков доставки</li>
+                    <li>Конфиденциальность персональных данных</li>
+                    <li>Достоверность информации о товарах</li>
+                </ul>
+
+                <h3>6.2. Ответственность Клиента</h3>
+                <p>Клиент обязуется:</p>
+                <ul>
+                    <li>Предоставлять достоверную контактную информацию</li>
+                    <li>Обеспечить возможность доставки в согласованное время</li>
+                    <li>Ознакомиться с условиями ухода за ковром</li>
+                    <li>Соблюдать правила эксплуатации товара</li>
+                </ul>
+
+                <h3>6.3. Форс-мажор</h3>
+                <p>Стороны освобождаются от ответственности за неисполнение обязательств по настоящему Соглашению, если такое неисполнение вызвано обстоятельствами непреодолимой силы, включая: стихийные бедствия, военные действия, забастовки, изменения законодательства.</p>
+            </section>
+
+            <section class="terms-section">
+                <h2>7. Реквизиты и контакты</h2>
+                
+                <div class="contact-box">
+                    <h3>ООО «Ориент Карпетс»</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Юридический адрес: 115191, г. Москва, ул. Ткацкая, д. 15</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>Телефон: +7 (495) 123-45-67</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: info@orient-carpets.ru</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>ИНН: 1234567890, ОГРН: 1234567890123</span>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>Дата последнего обновления:</strong> 15 ноября 2024 года</p>
+            </section>
+        </div>
+    </main>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Orient Carpets</h3>
+                <p>Эксклюзивные ковры ручной работы от мастеров Востока. Более 25 лет на рынке.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, ул. Ткацкая, 15</span>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (495) 123-45-67</span>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@orient-carpets.ru</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Часы работы</h3>
+                <ul>
+                    <li>Пн-Пт: 10:00 - 20:00</li>
+                    <li>Сб: 11:00 - 18:00</li>
+                    <li>Вс: 12:00 - 16:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Orient Carpets. Все права защищены.</p>
+            <p>Использование материалов сайта возможно только с письменного разрешения правообладателя.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
